@@ -9,21 +9,22 @@ if (!mongoUri || !adminSenha) {
   throw new Error("Env value not found.");
 }
 
-const client = await MongoClient.connect(mongoUri);
-const userCollection = client.db('cris_db').collection('users');
-const postCollection = client.db('cris_db').collection('events');
+export async function seeder() {
 
-async function seeder() {
+  const client = await MongoClient.connect(mongoUri);
+  const userCollection = client.db('cris_db').collection('users');
+  const postCollection = client.db('cris_db').collection('events');
+
+
   try {
     const verifyUser = await userCollection.findOne({ nome: "admin" });
     if (verifyUser) {
-      console.log("Usuário já consta no sistema");
-      return;
+      throw new Error("Usuário já consta no sistema");
     }
 
     const eventVerify = await postCollection.findOne({ descricao: "festa de aniversario do thalisson" });
     if (eventVerify) {
-      console.log("Evento já consta no sistema");
+      throw new Error("Usuário já consta no sistema");
       return;
     }
 
@@ -43,11 +44,11 @@ async function seeder() {
     console.log('Sucesso ao fazer seed');
 
   } catch (error) {
-    console.log(error);
-    throw new Error("Erro: " + error);
+    console.error(error)
+    throw new Error(error.message);
   } finally {
     await client.close();
   }
 }
 
-seeder();
+// seeder();

@@ -7,3 +7,34 @@ content-type: application/json
 }
 
 ###
+
+GET http://localhost:3000/getAllPosts HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:3000/addPost HTTP/1.1
+content-type: application/json
+
+{
+    "descricao": "festa de fim de ano, dona juscelinaaa",
+    "data": "20.12.24 as 2000000 horas"
+}
+
+###
+
+DELETE http://localhost:3000/deletePost/675ae5010c51048165760e27 HTTP/1.1
+
+###
+
+POST http://localhost:3000/updatePost/675ae2abfa5f3e3be03a38a5 HTTP/1.1
+content-type: application/json
+
+{
+  "descricao": "festa de fim de aniversario do thalisson, tematica nova",
+  "data": "pendente, esperando pagamento000"
+}
+
+###
+
+GET http://localhost:3000/seeder HTTP/1.1
