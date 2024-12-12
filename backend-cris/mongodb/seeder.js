@@ -35,7 +35,7 @@ export async function seeder() {
 
     const eventTest = {
       descricao: "festa de aniversario do thalisson",
-      data: "15/12 às 14 horas",
+      data: new Date("2024-12-12"),
     };
 
     await userCollection.insertOne(adminUser);

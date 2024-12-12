@@ -25,7 +25,7 @@ router.post('/handleLogin', async (req, res) => {
 
 
 router.get('/getAllPosts', async (req, res) => {
-  const events = await postCollection.find().toArray();
+  const events = await postCollection.find().sort({data: 1}).toArray();
   if (events <= 0) {
     return res.status(404).json({errorMessage: "Sem eventos disponíveis."})
   }
@@ -34,15 +34,16 @@ router.get('/getAllPosts', async (req, res) => {
 
 
 router.post('/addPost', async (req, res) => {
-  const { descricao, data } = req.body;
+  const { descricao, data, hora } = req.body;
 
-  if(!descricao || !data){
+  if(!descricao || !data || !hora){
     return res.status(400).json({errorMessage: "Valores precisam ser inseridos."});
   }
 
   const postToAdd = {
-    descricao,
-    data
+    descricao: descricao,
+    data: new Date(data),
+    hora: hora
   };
 
   try {
@@ -80,15 +81,16 @@ router.delete('/deletePost/:postId', async (req, res) => {
 
 router.post('/updatePost/:postId', async (req, res) => {
   const postId = req.params.postId;
-  const { descricao, data } = req.body;
+  const { descricao, data, hora } = req.body;
 
-  if(!descricao || !data || !postId){
+  if(!descricao || !data || !hora || !postId){
     return res.status(400).json({errorMessage: "Valores precisam ser inseridos."});
   }
 
   const postToUpdate = {
-    descricao,
-    data
+    descricao: descricao,
+    data: new Date(data),
+    hora: hora
   };
 
   try{

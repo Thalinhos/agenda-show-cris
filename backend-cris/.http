@@ -3,7 +3,7 @@ content-type: application/json
 
 {
     "usuario": "admin",
-    "senha": "vishhh"
+    "senha": "crisdjreidelas"
 }
 
 ###
@@ -18,21 +18,23 @@ content-type: application/json
 
 {
     "descricao": "festa de fim de ano, dona juscelinaaa",
-    "data": "20.12.24 as 2000000 horas"
+    "data": "2024-12-10",
+    "hora": "13hrs"
 }
 
 ###
 
-DELETE http://localhost:3000/deletePost/675ae5010c51048165760e27 HTTP/1.1
+DELETE http://localhost:3000/deletePost/675b0ba5c2714f3d46b0ad5f HTTP/1.1
 
 ###
 
-POST http://localhost:3000/updatePost/675ae2abfa5f3e3be03a38a5 HTTP/1.1
+POST http://localhost:3000/updatePost/675b1d16e28b8ab25294220c HTTP/1.1
 content-type: application/json
 
 {
-  "descricao": "festa de fim de aniversario do thalisson, tematica nova",
-  "data": "pendente, esperando pagamento000"
+  "descricao": "festa de fim de ano, dona juscelinaaa",
+  "data": "2024-12-10T00:00:00.000Z",
+  "hora": "14hrs"
 }
 
 ###
