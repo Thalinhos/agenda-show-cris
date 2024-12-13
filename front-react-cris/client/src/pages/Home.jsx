@@ -1,6 +1,7 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { CardEvent } from "../components/CardEvent";
+import { CalendarComponent } from "../components/CalendarComponent";
 
 export default function Home() {
 
@@ -16,7 +17,9 @@ export default function Home() {
                 
                 <div className="container mx-auto  flex-1 overflow-auto  px-1">
                     <div>
-                        <CardEvent/>
+                        {/* <CardEvent/> */}
+                        <CalendarComponent />
+
                     </div>
                 </div>
                 

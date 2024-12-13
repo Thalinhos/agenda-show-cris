@@ -17,8 +17,8 @@ POST http://localhost:3000/addPost HTTP/1.1
 content-type: application/json
 
 {
-    "descricao": "festa de fim de ano, dona juscelinaaa",
-    "data": "2024-12-10",
+    "descricao": "teste do dia de hoje!",
+    "data": "01/12/2024",
     "hora": "13hrs"
 }
 

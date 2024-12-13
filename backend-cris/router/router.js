@@ -3,6 +3,9 @@ import { setToken } from "../jwt/setToken.js";
 import { postCollection, userCollection } from "../mongodb/db.js";
 import { seeder } from "../mongodb/seeder.js";
 
+
+import moment from 'moment-timezone';
+
 import bcrypt from 'npm:bcrypt';
 import express from 'npm:express';
 export const router = express.Router();
@@ -33,26 +36,38 @@ router.get('/getAllPosts', async (req, res) => {
 });
 
 
+//////////////////////////////////////////////////////////////////////////////
 router.post('/addPost', async (req, res) => {
   const { descricao, data, hora } = req.body;
 
-  if(!descricao || !data || !hora){
-    return res.status(400).json({errorMessage: "Valores precisam ser inseridos."});
+  if (!descricao || !data || !hora) {
+    return res.status(400).json({ errorMessage: "Valores precisam ser inseridos." });
   }
+
+  // Validando se a data está no formato correto
+  const parsedDate = moment(data, "DD/MM/YYYY", true);
+
+  if (!parsedDate.isValid()) {
+    return res.status(400).json({ errorMessage: "Formato de data inválido. Use DD/MM/YYYY." });
+  }
+
+  // Converter para o fuso horário de São Paulo
+  const brasiliaDate = data
 
   const postToAdd = {
     descricao: descricao,
-    data: new Date(data),
+    data: brasiliaDate,
     hora: hora
   };
 
   try {
     await postCollection.insertOne(postToAdd);
-    return res.status(200).json({message: "Evento inserido com sucesso!"}); 
+    return res.status(200).json({ message: "Evento inserido com sucesso!" });
   } catch (error) {
-    return res.status(400).json({errorMessage: "Erro ao inserir valores. Erro: " + error}); 
+    return res.status(400).json({ errorMessage: "Erro ao inserir valores. Erro: " + error });
   }
-})
+});
+/////////////////////////////////////////////////////////////////////////////////
 
 
 router.delete('/deletePost/:postId', async (req, res) => {
