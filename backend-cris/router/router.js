@@ -1,10 +1,10 @@
-import { ObjectId } from "mongodb";
+import { ObjectId } from "npm:mongodb";
 import { setToken } from "../jwt/setToken.js";
 import { postCollection, userCollection } from "../mongodb/db.js";
 import { seeder } from "../mongodb/seeder.js";
 
 
-import moment from 'moment-timezone';
+import moment from 'npm:moment-timezone';
 
 import bcrypt from 'npm:bcrypt';
 import express from 'npm:express';
@@ -102,9 +102,15 @@ router.post('/updatePost/:postId', async (req, res) => {
     return res.status(400).json({errorMessage: "Valores precisam ser inseridos."});
   }
 
+  const parsedDate = moment(data, "DD/MM/YYYY", true);
+
+  if (!parsedDate.isValid()) {
+    return res.status(400).json({ errorMessage: "Formato de data inválido. Use DD/MM/YYYY." });
+  }
+
   const postToUpdate = {
     descricao: descricao,
-    data: new Date(data),
+    data: data,
     hora: hora
   };
 

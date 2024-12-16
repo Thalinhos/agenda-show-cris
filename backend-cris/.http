@@ -1,3 +1,7 @@
+### SEEDER
+GET http://localhost:3000/seeder HTTP/1.1
+
+### GET TOKEN - LOGIN IN
 POST http://localhost:3000/handleLogin HTTP/1.1
 content-type: application/json
 
@@ -6,37 +10,31 @@ content-type: application/json
     "senha": "crisdjreidelas"
 }
 
-###
-
+### RETRIEVE ALL POSTS
 GET http://localhost:3000/getAllPosts HTTP/1.1
 content-type: application/json
 
-###
-
+### ADD A NEW POST
 POST http://localhost:3000/addPost HTTP/1.1
 content-type: application/json
 
 {
     "descricao": "teste do dia de hoje!",
-    "data": "01/12/2024",
+    "data": "01/01/2025",
     "hora": "13hrs"
 }
 
-###
+### DELETE A POST BY ID
+DELETE http://localhost:3000/deletePost/6760696483be953b6d4cf1db HTTP/1.1
 
-DELETE http://localhost:3000/deletePost/675b0ba5c2714f3d46b0ad5f HTTP/1.1
-
-###
-
-POST http://localhost:3000/updatePost/675b1d16e28b8ab25294220c HTTP/1.1
+### UPDATE A POST BY ADD PASSING A NEW BODY
+POST http://localhost:3000/updatePost/676069ac83be953b6d4cf1dc HTTP/1.1
 content-type: application/json
 
 {
-  "descricao": "festa de fim de ano, dona juscelinaaa",
-  "data": "2024-12-10T00:00:00.000Z",
-  "hora": "14hrs"
+  "descricao": "teste do dia de hoje, mudado a dada do dia 1 para o dia 3!",
+      "data": "03/01/2025",
+      "hora": "14hrs"
 }
 
-###
 
-GET http://localhost:3000/seeder HTTP/1.1

@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from "npm:mongodb";
 import bcrypt from 'npm:bcrypt';
 
 
@@ -35,7 +35,7 @@ export async function seeder() {
 
     const eventTest = {
       descricao: "festa de aniversario do thalisson",
-      data: new Date("2024-12-12"),
+      data: "16/12/2024",
     };
 
     await userCollection.insertOne(adminUser);

@@ -3,6 +3,10 @@ import { Footer } from "../components/Footer";
 import { CardEvent } from "../components/CardEvent";
 import { CalendarComponent } from "../components/CalendarComponent";
 
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function Home() {
 
     const date = new Date(); 
@@ -17,7 +21,9 @@ export default function Home() {
                 
                 <div className="container mx-auto  flex-1 overflow-auto  px-1">
                     <div>
+
                         {/* <CardEvent/> */}
+                        
                         <CalendarComponent />
 
                     </div>
