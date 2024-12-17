@@ -25,12 +25,21 @@ export function CalendarComponent() {
 
     const eventsForDate = events.filter((event) => event.data === formattedDate);
 
-    return eventsForDate.map((event) => (
-      <div key={event._id} className="container">
+    let hasHRElement;
+    if(eventsForDate.length > 1){
+      hasHRElement = true;
+    }
+
+
+    return eventsForDate.map((event, index) => (
+      <div key={index} className="container">
         <p style={{ fontSize: "0.7em", margin: 0 }}>
           {event.descricao} às {event.hora}
         </p>
-        <hr className="mt-1 m-0"/>
+
+        {hasHRElement && (
+              <hr className="mt-1 m-0"/>
+            )}
       </div>
     ));
   };

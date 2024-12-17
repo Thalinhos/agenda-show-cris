@@ -3,31 +3,51 @@
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 
 export function ModalDisplayOnly({ render = false, dataToShow = "", closeModal }) {
 
     const dataToPost = dataToShow.replaceAll('/', '-');
-    const [dataFromDB, setDataFromDB] = useState();
+    const [dataFromDB, setDataFromDB] = useState([]);
     const [errorMessage, setErrorMessage] = useState();
 
     useEffect(() => {
-        (async () => {
-          try {
-            const response = await fetch(`http://localhost:3000/getPostFromDate/${dataToPost}`);
-            const data = await response.json();
-            if (data.message) {
-              setDataFromDB(data.message);
-            } else {
-              setErrorMessage(data.errorMessage);
-              console.error(data.errorMessage);
-            }
-          } catch (error) {
+      (async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/getPostFromDate/${dataToPost}`);
+          const data = await response.json();
+    
+          if (data.message) {
+            setDataFromDB(data.message);
+          } else {
             setErrorMessage(data.errorMessage);
-            console.error("Erro ao buscar eventos:", error);
           }
-        })();
-      }, []);
+        } catch (error) {
+          setErrorMessage("Erro ao buscar dados");
+        }
+      })();
+    }, [dataToPost]);
+
+    const displayDataInModal = () => {
+      let hasHRElement = false;
+      if(dataFromDB.length > 1){
+        hasHRElement = true;
+      }
+
+      if(dataFromDB.length > 0){
+        return dataFromDB.map((data, index) => (
+          <div key={index}>
+            <p>{data.descricao}</p>
+            <p>{data.data}</p>
+            <p>{data.hora}</p>
+            {hasHRElement && (
+              <hr />
+            )}
+          </div>
+        )
+      )} else {
+        return <p>Sem dados para exibir.</p>
+      }
+    }
 
 
     return (
@@ -37,16 +57,7 @@ export function ModalDisplayOnly({ render = false, dataToShow = "", closeModal }
             </Modal.Header>
 
             <Modal.Body>
-            {/* {dataToShow && (
-              <p>{dataToShow}</p>
-            )} */}
-
-            {errorMessage && (
-              <p>{errorMessage}</p>
-            )}
-
-
-
+            {displayDataInModal()}
             </Modal.Body>
 
             <Modal.Footer>
