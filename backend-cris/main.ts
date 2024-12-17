@@ -2,7 +2,7 @@
 import express from 'npm:express';
 import cors from "npm:cors"
 
-import { router } from './router/router.js';
+import { router } from './router/router.ts';
 
 const app = express();
 const port = 3000;

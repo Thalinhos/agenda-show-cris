@@ -26,11 +26,11 @@ export function CalendarComponent() {
     const eventsForDate = events.filter((event) => event.data === formattedDate);
 
     return eventsForDate.map((event) => (
-      <div key={event._id}>
-        <p style={{ fontSize: "0.8em", margin: 0 }}>
+      <div key={event._id} className="container">
+        <p style={{ fontSize: "0.7em", margin: 0 }}>
           {event.descricao} às {event.hora}
         </p>
-        <input type="hidden" name="objectId" value={event._id} />
+        <hr className="mt-1 m-0"/>
       </div>
     ));
   };

@@ -15,9 +15,9 @@ GET http://localhost:3000/getAllPosts HTTP/1.1
 content-type: application/json
 
 ### RETRIEVE A SINGLE POST FROM A DATA DD/MM/YYYY
-GET http://localhost:3000/getPostFromDate/10/12/2024 HTTP/1.1
+GET http://localhost:3000/getPostFromDate/01-12-2024 HTTP/1.1
 content-type: application/json
-
+############ WORKING HERE
 
 
 ### ADD A NEW POST
