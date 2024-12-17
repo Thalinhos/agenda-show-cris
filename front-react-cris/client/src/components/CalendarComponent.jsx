@@ -1,29 +1,40 @@
-// CalendarComponent.jsx
-
 import React, { useEffect, useState } from "react";
 import { Calendar } from "rsuite";
 import { Container, Row, Col } from "react-bootstrap";
 import "rsuite/dist/rsuite.min.css";
-import { ModalEvent } from "../components/ModalEvent";
+import { ModalDisplayOnly } from "./ModalDisplayOnly.jsx";
+
 
 export function CalendarComponent() {
   const [showModal, setShowModal] = useState(false);
   const [events, setEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [dataModal, setDataModal] = useState(null)
 
-  const handleCloseModal = () => setShowModal(false); 
-
-
-  const formatDateAsString = (date) =>
-    date.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
-
-  const handleSelect = (date) => {
+  const formatDateAsString = (date) => date.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+  
+  const handleSelect = (data) => {
+    const formatedData = formatDateAsString(data);
+    setDataModal(formatedData);
     setShowModal(true);
-    const formattedDate = formatDateAsString(date);
-    console.log(formattedDate)
-    setSelectedDate(formattedDate);
-  };
+  }
+  const handleCloseModal = () => setShowModal(false);
+  
 
+  const renderCell = (date) => {
+    const formattedDate = formatDateAsString(date);
+
+    const eventsForDate = events.filter((event) => event.data === formattedDate);
+
+    return eventsForDate.map((event) => (
+      <div key={event._id}>
+        <p style={{ fontSize: "0.8em", margin: 0 }}>
+          {event.descricao} às {event.hora}
+        </p>
+        <input type="hidden" name="objectId" value={event._id} />
+      </div>
+    ));
+  };
+  
   useEffect(() => {
     (async () => {
       try {
@@ -40,18 +51,9 @@ export function CalendarComponent() {
     })();
   }, []);
 
-  const renderCell = (date) => {
-    const formattedDate = formatDateAsString(date);
-    const eventsForDate = events.filter((event) => event.data === formattedDate);
 
-    return eventsForDate.map((event, index) => (
-      <p key={index} style={{ fontSize: "0.8em", margin: 0 }}>
-        {event.descricao} às {event.hora}
-      </p>
-    ));
-  };
 
-  
+
 
   return (
     <Container fluid="md">
@@ -60,20 +62,19 @@ export function CalendarComponent() {
           <div className="calendar-wrapper">
             <Calendar
               bordered
-              renderCell={renderCell}
+              renderCell={renderCell} //a data é passada automatica
               onSelect={handleSelect}
               style={{ width: "100%", margin: "0 auto" }}
             />
           </div>
         </Col>
       </Row>
+
       {showModal && (
-        <ModalEvent
+        <ModalDisplayOnly
           render={showModal}
-          descricao="Evento Exemplo"
-          data={selectedDate}
-          hora="12:00"
-          closeModal={handleCloseModal} 
+          dataToShow={dataModal}
+          closeModal={handleCloseModal}
         />
       )}
     </Container>

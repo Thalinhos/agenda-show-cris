@@ -133,6 +133,25 @@ router.post('/updatePost/:postId', async (req, res) => {
   }
 });
 
+
+router.get('/getPostFromDate/', (req, res) => {
+  const dateValue =  req.params.dateValue ;
+
+  if(!dateValue){
+    return res.status(400).json({errorMessage: "Valores precisam ser inseridos."});
+  }
+  const parsedDate = moment(dateValue, "DD/MM/YYYY", true);
+
+  if (!parsedDate.isValid()) {
+    return res.status(400).json({ errorMessage: "Formato de data inválido. Use DD/MM/YYYY." });
+  }
+
+  return res.status(200).json({message: 'sucesso ao enviar a data' + dateValue})
+
+})
+
+
+
 router.get('/seeder', async (req, res) => {
   try {
     await seeder();

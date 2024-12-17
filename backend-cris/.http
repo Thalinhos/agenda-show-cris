@@ -14,13 +14,19 @@ content-type: application/json
 GET http://localhost:3000/getAllPosts HTTP/1.1
 content-type: application/json
 
+### RETRIEVE A SINGLE POST FROM A DATA DD/MM/YYYY
+GET http://localhost:3000/getPostFromDate/10/12/2024 HTTP/1.1
+content-type: application/json
+
+
+
 ### ADD A NEW POST
 POST http://localhost:3000/addPost HTTP/1.1
 content-type: application/json
 
 {
     "descricao": "teste do dia de hoje!",
-    "data": "01/01/2025",
+    "data": "01/12/2024",
     "hora": "13hrs"
 }
 
