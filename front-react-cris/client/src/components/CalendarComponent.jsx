@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Calendar } from "rsuite";
+import { Container, Row, Col, Modal } from "react-bootstrap";
 import "rsuite/dist/rsuite.min.css";
 import { ModalEvent } from "../components/ModalEvent";
 
-
 export function CalendarComponent() {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   const [events, setEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -46,16 +46,20 @@ export function CalendarComponent() {
   };
 
   return (
-    <div>
-      <Calendar
-        bordered
-        renderCell={renderCell}
-        onSelect={handleSelect}
-        style={{ width: 800, margin: "0 auto" }}
-      />
-      {showModal && 
-        <ModalEvent render={showModal}/>
-      }
-    </div>
+    <Container fluid="md">
+      <Row className="justify-content-center">
+        <Col xs={12} md={10} lg={8}>
+          <div className="calendar-wrapper">
+            <Calendar
+              bordered
+              renderCell={renderCell}
+              onSelect={handleSelect}
+              style={{ width: "100%", margin: "0 auto" }}
+            />
+          </div>
+        </Col>
+      </Row>
+      {showModal && <ModalEvent render={showModal} />}
+    </Container>
   );
 }
