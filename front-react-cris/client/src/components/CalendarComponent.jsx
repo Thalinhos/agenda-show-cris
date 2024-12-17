@@ -1,6 +1,8 @@
+// CalendarComponent.jsx
+
 import React, { useEffect, useState } from "react";
 import { Calendar } from "rsuite";
-import { Container, Row, Col, Modal } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "rsuite/dist/rsuite.min.css";
 import { ModalEvent } from "../components/ModalEvent";
 
@@ -9,12 +11,16 @@ export function CalendarComponent() {
   const [events, setEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
+  const handleCloseModal = () => setShowModal(false); 
+
+
   const formatDateAsString = (date) =>
     date.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
 
   const handleSelect = (date) => {
     setShowModal(true);
     const formattedDate = formatDateAsString(date);
+    console.log(formattedDate)
     setSelectedDate(formattedDate);
   };
 
@@ -45,6 +51,8 @@ export function CalendarComponent() {
     ));
   };
 
+  
+
   return (
     <Container fluid="md">
       <Row className="justify-content-center">
@@ -59,7 +67,15 @@ export function CalendarComponent() {
           </div>
         </Col>
       </Row>
-      {showModal && <ModalEvent render={showModal} />}
+      {showModal && (
+        <ModalEvent
+          render={showModal}
+          descricao="Evento Exemplo"
+          data={selectedDate}
+          hora="12:00"
+          closeModal={handleCloseModal} 
+        />
+      )}
     </Container>
   );
 }
