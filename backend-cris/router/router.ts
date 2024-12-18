@@ -6,6 +6,7 @@ import { seeder } from "../mongodb/seeder.js";
 import moment from 'npm:moment-timezone';
 import bcrypt from 'npm:bcrypt';
 import express from 'npm:express';
+import { verifyToken } from "../jwt/verifyToken.js";
 
 export const router = express.Router();
 
@@ -24,6 +25,11 @@ router.post('/handleLogin', async (req, res) => {
 
   return res.status(200).json({token: token}); 
 });
+
+router.post('/verify', verifyToken, (req, res) => {
+  return res.status(200).json({message: req.decoded});
+})
+
 
 
 router.get('/getAllPosts', async (req, res) => {

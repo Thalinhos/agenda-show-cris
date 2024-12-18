@@ -5,6 +5,7 @@
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
     "bcrypt": "npm:bcrypt@^5.1.1",
+    "cors": "npm:cors@^2.8.5",
     "express": "npm:express@^4.21.2",
     "jsonwebtoken": "npm:jsonwebtoken@^9.0.2",
     "moment-timezone": "npm:moment-timezone@^0.5.46",

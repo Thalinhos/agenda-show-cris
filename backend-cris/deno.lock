@@ -6,6 +6,7 @@
     "npm:bcrypt@*": "5.1.1",
     "npm:bcrypt@^5.1.1": "5.1.1",
     "npm:cors@*": "2.8.5",
+    "npm:cors@^2.8.5": "2.8.5",
     "npm:express@*": "4.21.2",
     "npm:express@^4.21.2": "4.21.2",
     "npm:jsonwebtoken@*": "9.0.2",
@@ -834,6 +835,7 @@
     "dependencies": [
       "jsr:@std/assert@1",
       "npm:bcrypt@^5.1.1",
+      "npm:cors@^2.8.5",
       "npm:express@^4.21.2",
       "npm:jsonwebtoken@^9.0.2",
       "npm:moment-timezone@~0.5.46",

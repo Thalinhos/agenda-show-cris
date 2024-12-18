@@ -18,7 +18,7 @@ export const verifyToken = ((req, res, next) => {
 
     jwt.verify(token, SECRET, (err, decoded) => {
         if (err) { 
-            return res.status(400).json({errorMessage: 'Token expirado.'}); //invalido, mas vamos bater essa msg para mostrar direto ao cliente  
+            return res.status(400).json({errorMessage: 'Token expirado/inválido.'}); //invalido, mas vamos bater essa msg para mostrar direto ao cliente  
         }
         
         req.decoded = decoded
