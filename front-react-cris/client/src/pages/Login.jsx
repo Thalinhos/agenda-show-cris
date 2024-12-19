@@ -46,7 +46,7 @@ const Login = () => {
               }
 
         } catch (error) {
-            setErrorMessage('Erro ao fazer login: ' + error)
+            setErrorMessage('Erro ao fazer login: Servidor indisponível.')
         }
     };
 
