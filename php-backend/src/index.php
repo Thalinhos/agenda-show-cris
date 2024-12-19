@@ -3,6 +3,12 @@ require '../vendor/autoload.php';
 require_once './JWT.php';
 require_once './mongodb.php';
 
+header('Content-Type: application/json; charset=UTF-8');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+
 // app.post('/handleLogin')
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SERVER['REQUEST_URI'] == '/handleLogin'){
     $data = json_decode(file_get_contents('php://input'), true);
@@ -99,6 +105,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SERVER['REQUEST_URI'] == '/addPost
     }
 }
 
+// app.get('/getPostFromDate/${dataToPost}')
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && strpos($_SERVER['REQUEST_URI'], '/getPostFromDate/') !== false) {
+    // Pegando a URI completa
+    $uri = $_SERVER['REQUEST_URI'];
+
+    $valueDate = explode('/getPostFromDate/', $uri);
+
+    if (isset($valueDate[1]) && !empty($valueDate[1])) {
+        
+        $dateValue = $valueDate[1];
+
+        $date = DateTime::createFromFormat('d-m-Y', $dateValue);
+        $date = $date->format('d/m/Y');
+
+        $posts = $postCollection->find(["data" => $date])->toArray();
+        
+        header('Content-Type: application/json; charset=UTF-8', true , 200);
+        
+        echo json_encode(["message" => $posts]);
+    } else {
+        header('Content-Type: application/json; charset=UTF-8', true , 400);
+        echo json_encode(["errorMessage" => "Nenhuma data foi passada após '/getPostFromDate/'."]);
+    }
+}
 
 
 

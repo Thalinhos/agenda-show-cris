@@ -15,5 +15,8 @@
         "mongodb/mongodb": "^1.20",
         "firebase/php-jwt": "^6.10",
         "nesbot/carbon": "^3.8"
+    },
+    "scripts": {
+        "start": "cd src && php -S localhost:3000"
     }
 }

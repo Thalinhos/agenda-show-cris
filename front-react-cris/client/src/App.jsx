@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
-import ReactPHP from './pages/React_php'
 
 function App() {
 
@@ -14,7 +13,6 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/admin" element={<Admin/>} />
-          <Route path="/php" element={<ReactPHP/>} />
         </Routes>
       </BrowserRouter>
     </>

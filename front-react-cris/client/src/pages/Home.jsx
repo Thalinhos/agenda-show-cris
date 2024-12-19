@@ -1,6 +1,6 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { CardEvent } from "../components/CardEvent";
+// import { CardEvent } from "../components/CardEvent";
 import { CalendarComponent } from "../components/CalendarComponent";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
