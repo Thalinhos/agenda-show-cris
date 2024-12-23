@@ -1,12 +1,12 @@
-import { ObjectId } from "npm:mongodb";
-import { setToken } from "../jwt/setToken.js";
-import { postCollection, userCollection } from "../mongodb/db.js";
-import { seeder } from "../mongodb/seeder.js";
+import { ObjectId } from "mongodb";
+import { setToken } from "../jwt/setToken.mjs";
+import { postCollection, userCollection } from "../mongodb/db.mjs";
+import { seeder } from "../mongodb/seeder.mjs";
 
-import moment from 'npm:moment-timezone';
-import bcrypt from 'npm:bcrypt';
-import express from 'npm:express';
-import { verifyToken } from "../jwt/verifyToken.js";
+import moment from 'moment-timezone';
+import bcrypt from 'bcrypt';
+import express from 'express';
+import { verifyToken } from "../jwt/verifyToken.mjs";
 
 export const router = express.Router();
 
@@ -34,7 +34,7 @@ router.post('/verify', verifyToken, (req, res) => {
 
 router.get('/getAllPosts', async (req, res) => {
   const events = await postCollection.find().sort({data: 1}).toArray();
-  if (events <= 0) {
+  if (events.length <= 0) {
     return res.status(404).json({errorMessage: "Sem eventos disponíveis."})
   }
     return res.json({message: events})

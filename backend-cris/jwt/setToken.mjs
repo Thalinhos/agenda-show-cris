@@ -1,6 +1,7 @@
-import jwt from 'npm:jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
-const SECRET = Deno.env.get("SECRET")
+// const SECRET = Deno.env.get("SECRET")
+const SECRET = process.env.SECRET;
 
 export const setToken = ((user) => {
 

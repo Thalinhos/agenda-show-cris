@@ -1,9 +1,10 @@
-import { MongoClient } from "npm:mongodb";
-import bcrypt from 'npm:bcrypt';
+import { MongoClient } from "mongodb";
+import bcrypt from 'bcrypt';
 
 
-const mongoUri = Deno.env.get("MONGO_URI");
-const adminSenha = Deno.env.get("SENHA_ADMIN");
+const mongoUri = process.env.MONGO_URI;
+
+const adminSenha = process.env.ADMIN_SENHA;
 
 if (!mongoUri || !adminSenha) {
   throw new Error("Env value not found.");

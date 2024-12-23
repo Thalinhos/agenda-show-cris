@@ -1,8 +1,8 @@
 // deno-lint-ignore-file
-import express from 'npm:express';
-import cors from "npm:cors"
+import express from 'express';
+import cors from "cors"
 
-import { router } from './router/router.ts';
+import { router } from './router/router.mjs';
 
 const app = express();
 const port = 3000;

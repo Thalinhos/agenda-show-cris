@@ -1,6 +1,7 @@
-import { MongoClient } from "npm:mongodb";
+import { MongoClient } from "mongodb";
 
-const mongoUri = Deno.env.get("MONGO_URI");
+// const mongoUri = Deno.env.get("MONGO_URI");
+const mongoUri = process.env.MONGO_URI;
 
 if(!mongoUri){
     throw new Error("Env value not found.");
