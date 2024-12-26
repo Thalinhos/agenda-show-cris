@@ -3,11 +3,16 @@ import Button from 'react-bootstrap/Button';
 import { ModalEditEvent } from "./ModalEditEvent";
 import { ModalAddEvent } from "./ModalAddEvent";
 import { mainUrl } from "../url";
+import { useNavigate } from 'react-router-dom';
+
 
 
 export function CardEvent() {
 
     const url = mainUrl
+
+    const navigate = useNavigate()
+
 
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -31,6 +36,15 @@ export function CardEvent() {
     }, [fetchAgain]);
 
     const deleteFromId = async (id) => {
+
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Você precisa estar logado para excluir um evento. Faça login e tente novamente.");
+            navigate('/login')
+            return
+        }
+
         let deleteConfirm = confirm("Deseja realmente excluir este evento?");
         if (!deleteConfirm) { return }
 
