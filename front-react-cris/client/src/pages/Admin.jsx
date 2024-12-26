@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { CardEvent } from '../components/CardEvent';
+
+
+
 export default function Admin() {
 
     const navigate = useNavigate()
@@ -26,7 +32,7 @@ export default function Admin() {
 
                 if(data.errorMessage){ navigate('/login'); }
 
-                if(data.message){ alert("Sucesso ao efetuar login, meu chapa", data.message); } // EXCLUIR DEPOIS
+                // if(data.message){ alert("Sucesso ao efetuar login, meu chapa", data.message); } // EXCLUIR DEPOIS
             } 
             catch (error) { navigate('/login'); }
         }
@@ -35,7 +41,27 @@ export default function Admin() {
 
     return (
         <>
-            <h1>Admin</h1>
+            
+            <div className="flex flex-col min-h-screen">
+                            <Header pagename={"Admin Dashboard"}/>
+                            
+                            
+                            <div className="container mx-auto  flex-1 overflow-auto  px-1">
+                                <div>
+            
+                          
+                                    <CardEvent/>
+
+            
+                                </div>
+                            </div>
+                            
+            
+                            <Footer />
+                        </div>
+
+
+
         </>
     )
 }

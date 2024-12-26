@@ -33,11 +33,25 @@ router.post('/verify', verifyToken, (req, res) => {
 
 
 router.get('/getAllPosts', async (req, res) => {
-  const events = await postCollection.find().sort({data: 1}).toArray();
-  if (events.length <= 0) {
-    return res.status(404).json({errorMessage: "Sem eventos disponíveis."})
+  try {
+    const events = await postCollection.find().toArray();
+
+    events.forEach(event => {
+      const [day, month, year] = event.data.split('/');
+      event.parsedDate = new Date(`${month}/${day}/${year}`);
+    });
+
+    events.sort((a, b) => a.parsedDate - b.parsedDate);
+
+    if (events.length <= 0) {
+      return res.status(404).json({ errorMessage: "Sem eventos disponíveis." });
+    }
+
+    return res.json({ message: events });
+  } catch (error) {
+    console.error("Erro ao buscar os eventos:", error);
+    return res.status(500).json({ errorMessage: "Erro ao buscar os eventos." });
   }
-    return res.json({message: events})
 });
 
 

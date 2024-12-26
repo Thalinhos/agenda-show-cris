@@ -33,7 +33,7 @@ export function CalendarComponent() {
 
     return eventsForDate.map((event, index) => (
       <div key={index}  className="container">
-        <p style={{ fontSize: "0.7em", margin: 0 }}>
+        <p style={{ fontSize: "0.9em", margin: 0 }}>
           {event.descricao} às {event.hora}
         </p>
 
