@@ -10,7 +10,10 @@ const port = 3000;
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',  // Permite apenas requisições do seu frontend React
+}));
 
 app.use(router);
 
