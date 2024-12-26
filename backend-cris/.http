@@ -11,9 +11,9 @@ content-type: application/json
 }
 
 ### VALIDATE TOKEN
-POST http://localhost:3000/verify HTTP/1.1
+POST https://agenda-show-cris.onrender.com/verify HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzM0OTU4Njg1LCJleHAiOjE3MzQ5NTk1ODV9.cvJwWOHpykRYKsn9gPsLcCt4_a0PvdxWk5erMHaNKew
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzM1MjM4OTcyLCJleHAiOjE3MzUyMzk4NzJ9.Vsh7mpC9D5N9kDlZ7jYlLkwNIb_3Abk7ncTUl3-nasY
 
 
 
@@ -30,6 +30,8 @@ content-type: application/json
 ### ADD A NEW POST
 POST https://agenda-show-cris.onrender.com/addPost HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzM1MjM4OTcyLCJleHAiOjE3MzUyMzk4NzJ9.Vsh7mpC9D5N9kDlZ7jYlLkwNIb_3Abk7ncTUl3-nasY
+
 
 {
     "descricao": "teste do dia de hoje!",
@@ -38,11 +40,13 @@ content-type: application/json
 }
 
 ### DELETE A POST BY ID
-DELETE http://localhost:3000/deletePost/67695e3e024898cc1a33bbc3 HTTP/1.1
+DELETE https://agenda-show-cris.onrender.com/deletePost/67695e3e024898cc1a33bbc3 HTTP/1.1
 
 ### UPDATE A POST BY ADD PASSING A NEW BODY
-POST http://localhost:3000/updatePost/67695e2b024898cc1a33bbc2 HTTP/1.1
+POST https://agenda-show-cris.onrender.com/updatePost/676d992e2f0aed5ad8ce627b  HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzM1MjM4OTcyLCJleHAiOjE3MzUyMzk4NzJ9.Vsh7mpC9D5N9kDlZ7jYlLkwNIb_3Abk7ncTUl3-nasY
+
 
 {
   "descricao": "teste do dia de hoje, mudado a dada do dia 1 para o dia 3!",

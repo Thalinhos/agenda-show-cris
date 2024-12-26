@@ -21,14 +21,12 @@ export function ModalAddEvent({ closeModal, reRender }) {
     const handleAddSubmit = async (event) => {
         event.preventDefault(); 
 
-        const token = localStorage.getItem('token');
-
         try {
             const response = await fetch(url + '/addPost', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(formData), 
             });
