@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(express.json());
 // app.use(cors());
 app.use(cors({
-  origin: 'http://localhost:3000',  // Permite apenas requisições do seu frontend React
+  origin: "https://agenda-show-cris.onrender.com",  // Permite apenas requisições do seu frontend React
 }));
 
 app.use(router);
