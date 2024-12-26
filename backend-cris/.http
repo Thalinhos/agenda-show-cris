@@ -1,8 +1,8 @@
 ### SEEDER
-GET http://localhost:3000/seeder HTTP/1.1
+GET https://agenda-show-cris.onrender.com/seeder HTTP/1.1
 
 ### GET TOKEN - LOGIN IN
-POST http://localhost:3000/handleLogin HTTP/1.1
+POST https://agenda-show-cris.onrender.com/handleLogin HTTP/1.1
 content-type: application/json
 
 {
@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 
 ### RETRIEVE ALL POSTS
-GET http://localhost:3000/getAllPosts HTTP/1.1
+GET https://agenda-show-cris.onrender.com/getAllPosts HTTP/1.1
 content-type: application/json
 
 ### RETRIEVE A SINGLE POST FROM A DATA DD/MM/YYYY
@@ -28,7 +28,7 @@ content-type: application/json
 
 
 ### ADD A NEW POST
-POST http://localhost:3000/addPost HTTP/1.1
+POST https://agenda-show-cris.onrender.com/addPost HTTP/1.1
 content-type: application/json
 
 {

@@ -56,7 +56,7 @@ router.get('/getAllPosts', async (req, res) => {
 
 
 //////////////////////////////////////////////////////////////////////////////
-router.post('/addPost', async (req, res) => {
+router.post('/addPost', verifyToken ,async (req, res) => {
   const { descricao, data, hora } = req.body;
 
   if (!descricao || !data || !hora) {
@@ -89,7 +89,7 @@ router.post('/addPost', async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////
 
 
-router.delete('/deletePost/:postId', async (req, res) => {
+router.delete('/deletePost/:postId', verifyToken, async (req, res) => {
   const postId = req.params.postId;
 
   if(!postId){
@@ -113,7 +113,7 @@ router.delete('/deletePost/:postId', async (req, res) => {
   }
 });
 
-router.post('/updatePost/:postId', async (req, res) => {
+router.post('/updatePost/:postId', verifyToken, async (req, res) => {
   const postId = req.params.postId;
   const { descricao, data, hora } = req.body;
 
@@ -153,7 +153,7 @@ router.post('/updatePost/:postId', async (req, res) => {
 });
 
 
-router.get('/getPostFromDate/:dateValue', async (req, res) => {
+router.get('/getPostFromDate/:dateValue', verifyToken, async (req, res) => {
   const dateValue = req.params.dateValue;
   // console.log(dateValue);
 
