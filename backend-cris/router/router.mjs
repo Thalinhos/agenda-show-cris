@@ -153,7 +153,7 @@ router.post('/updatePost/:postId', verifyToken, async (req, res) => {
 });
 
 
-router.get('/getPostFromDate/:dateValue', verifyToken, async (req, res) => {
+router.get('/getPostFromDate/:dateValue', async (req, res) => {
   const dateValue = req.params.dateValue;
   // console.log(dateValue);
 

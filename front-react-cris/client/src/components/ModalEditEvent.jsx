@@ -26,11 +26,15 @@ export function ModalEditEvent(props) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        const token = localStorage.getItem('token');
+
         try {
             const response = await fetch(url + `/updatePost/${_id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     descricao: formData.descricao,

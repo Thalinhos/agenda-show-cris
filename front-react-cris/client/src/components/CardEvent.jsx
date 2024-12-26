@@ -34,11 +34,14 @@ export function CardEvent() {
         let deleteConfirm = confirm("Deseja realmente excluir este evento?");
         if (!deleteConfirm) { return }
 
+        const token = localStorage.getItem('token');
+
         try {
             const res = await fetch(url + `/deletePost/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ id }),
             });
