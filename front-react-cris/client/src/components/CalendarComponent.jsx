@@ -47,7 +47,7 @@ export function CalendarComponent() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:3000/getAllPosts");
+        const response = await fetch("https://agenda-show-cris.onrender.com/getAllPosts");
         const data = await response.json();
         if (data.message) {
           setEvents(data.message);

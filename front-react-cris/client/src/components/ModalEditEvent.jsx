@@ -24,7 +24,7 @@ export function ModalEditEvent(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3000/updatePost/${_id}`, {
+            const response = await fetch(`https://agenda-show-cris.onrender.com/updatePost/${_id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

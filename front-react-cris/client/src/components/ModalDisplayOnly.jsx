@@ -13,7 +13,7 @@ export function ModalDisplayOnly({ render = false, dataToShow = "", closeModal }
     useEffect(() => {
       (async () => {
         try {
-          const response = await fetch(`http://localhost:3000/getPostFromDate/${dataToPost}`);
+          const response = await fetch(`https://agenda-show-cris.onrender.com/getPostFromDate/${dataToPost}`);
           const data = await response.json();
     
           if (data.message) {

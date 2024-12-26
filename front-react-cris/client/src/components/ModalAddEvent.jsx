@@ -18,7 +18,7 @@ export function ModalAddEvent({ closeModal, reRender }) {
         event.preventDefault(); 
 
         try {
-            const response = await fetch('http://localhost:3000/addPost', {
+            const response = await fetch('https://agenda-show-cris.onrender.com/addPost', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

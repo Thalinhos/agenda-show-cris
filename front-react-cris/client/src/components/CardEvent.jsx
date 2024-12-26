@@ -14,7 +14,7 @@ export function CardEvent() {
     useEffect(() => {
         async function getData() {
             try {
-                const res = await fetch("http://localhost:3000/getAllPosts");
+                const res = await fetch("https://agenda-show-cris.onrender.com/getAllPosts");
                 const data = await res.json();
                 setEvents(data.message); 
                 console.log(data.message);
@@ -31,7 +31,7 @@ export function CardEvent() {
         if (!deleteConfirm) { return }
 
         try {
-            const res = await fetch(`http://localhost:3000/deletePost/${id}`, {
+            const res = await fetch(`https://agenda-show-cris.onrender.com/deletePost/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
