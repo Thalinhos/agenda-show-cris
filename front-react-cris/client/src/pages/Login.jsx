@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { mainUrl } from '../url';
 
 const Login = () => {
+
+    const url = mainUrl;
 
     const navigate = useNavigate()
 
@@ -24,7 +27,7 @@ const Login = () => {
         console.log(formLogin)
         
         try {
-            const res = await fetch('http://localhost:3000/handleLogin', {
+            const res = await fetch(url + '/handleLogin', {
                 method: 'POST', 
                 headers: {
                   'Content-Type': 'application/json' 
@@ -46,7 +49,7 @@ const Login = () => {
               }
 
         } catch (error) {
-            setErrorMessage('Erro ao fazer login: Servidor indisponível.')
+            setErrorMessage('Erro ao fazer login: Servidor indisponível: ' + error);
         }
     };
 

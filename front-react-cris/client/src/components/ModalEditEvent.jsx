@@ -3,8 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from 'react';
+import { mainUrl } from '../url';
 
 export function ModalEditEvent(props) {
+
+    const url = mainUrl
 
     const { render, closeModal, _id, descricao, data, hora, reRender } = props;
 
@@ -24,7 +27,7 @@ export function ModalEditEvent(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`https://agenda-show-cris.onrender.com/updatePost/${_id}`, {
+            const response = await fetch(url + `/updatePost/${_id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

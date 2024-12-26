@@ -3,9 +3,13 @@ import { Calendar } from "rsuite";
 import { Container, Row, Col } from "react-bootstrap";
 import "rsuite/dist/rsuite.min.css";
 import { ModalDisplayOnly } from "./ModalDisplayOnly.jsx";
+import { mainUrl } from "../url.js";
 
 
 export function CalendarComponent() {
+
+  const url = mainUrl
+
   const [showModal, setShowModal] = useState(false);
   const [events, setEvents] = useState([]);
   const [dataModal, setDataModal] = useState(null)
@@ -47,7 +51,7 @@ export function CalendarComponent() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("https://agenda-show-cris.onrender.com/getAllPosts");
+        const response = await fetch(url + "/getAllPosts");
         const data = await response.json();
         if (data.message) {
           setEvents(data.message);

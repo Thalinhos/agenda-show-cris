@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { CardEvent } from '../components/CardEvent';
+import { mainUrl } from '../url';
 
 
 
 export default function Admin() {
+
+    const url = mainUrl
 
     const navigate = useNavigate()
 
@@ -18,7 +21,7 @@ export default function Admin() {
             
                 if(!token){ navigate('/login'); }
 
-                const response = await fetch('http://localhost:3000/verify', {
+                const response = await fetch( mainUrl + '/verify', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',

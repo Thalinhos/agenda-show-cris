@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { mainUrl } from '../url';
 
 export function ModalDisplayOnly({ render = false, dataToShow = "", closeModal }) {
+
+    const url = mainUrl
 
     const dataToPost = dataToShow.replaceAll('/', '-');
     const [dataFromDB, setDataFromDB] = useState([]);
@@ -13,7 +16,7 @@ export function ModalDisplayOnly({ render = false, dataToShow = "", closeModal }
     useEffect(() => {
       (async () => {
         try {
-          const response = await fetch(`https://agenda-show-cris.onrender.com/getPostFromDate/${dataToPost}`);
+          const response = await fetch(url +`/getPostFromDate/${dataToPost}`);
           const data = await response.json();
     
           if (data.message) {

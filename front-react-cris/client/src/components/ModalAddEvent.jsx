@@ -2,8 +2,12 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { mainUrl } from '../url';
 
 export function ModalAddEvent({ closeModal, reRender }) {
+
+    const url = mainUrl
+
     const [formData, setFormData] = useState({ descricao: '', data: '', hora: '' });
 
     const handleChange = (event) => {
@@ -18,7 +22,7 @@ export function ModalAddEvent({ closeModal, reRender }) {
         event.preventDefault(); 
 
         try {
-            const response = await fetch('https://agenda-show-cris.onrender.com/addPost', {
+            const response = await fetch(url + '/addPost', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

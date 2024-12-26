@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import { ModalEditEvent } from "./ModalEditEvent";
 import { ModalAddEvent } from "./ModalAddEvent";
+import { mainUrl } from "../url";
 
 
 export function CardEvent() {
+
+    const url = mainUrl
+
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState({});
@@ -14,7 +18,7 @@ export function CardEvent() {
     useEffect(() => {
         async function getData() {
             try {
-                const res = await fetch("https://agenda-show-cris.onrender.com/getAllPosts");
+                const res = await fetch(url + "/getAllPosts");
                 const data = await res.json();
                 setEvents(data.message); 
                 console.log(data.message);
@@ -31,7 +35,7 @@ export function CardEvent() {
         if (!deleteConfirm) { return }
 
         try {
-            const res = await fetch(`https://agenda-show-cris.onrender.com/deletePost/${id}`, {
+            const res = await fetch(url + `/deletePost/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
