@@ -15,6 +15,10 @@ export default function Admin() {
     const navigate = useNavigate()
 
     useEffect(()=> {
+
+        document.title = 'Admin Dashboard';
+
+
         const verifyToken = async () => {
             try {
                 const token = localStorage.getItem('token');

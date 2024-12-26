@@ -2,10 +2,16 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 // import { CardEvent } from "../components/CardEvent";
 import { CalendarComponent } from "../components/CalendarComponent";
+import { useEffect } from "react";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
+
+
+    useEffect(() => {
+        document.title = 'Minha Agenda';
+      }, []); 
 
     const date = new Date(); 
     const nomeDoMes = date.toLocaleString('pt-BR', { month: 'long' });
