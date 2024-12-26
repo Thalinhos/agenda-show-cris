@@ -21,6 +21,8 @@ export function ModalAddEvent({ closeModal, reRender }) {
     const handleAddSubmit = async (event) => {
         event.preventDefault(); 
 
+        console.log('token: ',localStorage.getItem('token'));
+
         try {
             const response = await fetch(url + '/addPost', {
                 method: 'POST',
