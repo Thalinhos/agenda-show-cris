@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from "cors"
 
+
 import { router } from './router/router.mjs';
 
 const app = express();
@@ -13,7 +14,12 @@ app.use(cors());
 
 app.use(router);
 
+//this route means when expressjs dosnt found a route, it will return the index.html file
+//and the react-router will handle the route
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta http://localhost:${port}/`);
 });
-//deno --watch --env-file -A .\main.js
