@@ -21,7 +21,7 @@ export function CardEvent() {
                 const res = await fetch(url + "/getAllPosts");
                 const data = await res.json();
                 setEvents(data.message); 
-                console.log(data.message);
+                // console.log(data.message);
             } catch (error) {
                 console.error("Erro ao buscar os eventos:", error);
             }

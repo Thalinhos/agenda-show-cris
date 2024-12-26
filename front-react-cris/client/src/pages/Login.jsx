@@ -24,7 +24,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(formLogin)
+        // console.log(formLogin)
         
         try {
             const res = await fetch(url + '/handleLogin', {

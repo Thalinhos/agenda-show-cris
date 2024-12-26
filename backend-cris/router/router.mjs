@@ -155,27 +155,27 @@ router.post('/updatePost/:postId', async (req, res) => {
 
 router.get('/getPostFromDate/:dateValue', async (req, res) => {
   const dateValue = req.params.dateValue;
-  console.log(dateValue);
+  // console.log(dateValue);
 
   if (!dateValue) {
     return res.status(400).json({ errorMessage: "Valores precisam ser inseridos." });
   }
   
   const dateMoment = moment(dateValue, "DD-MM-YYYY", true);
-  console.log(dateMoment);
+  // console.log(dateMoment);
   
   if (!dateMoment.isValid()) {
     return res.status(400).json({ errorMessage: "Formato de data inválido. Use DD-MM-YYYY." });
   }
   
   const dataParsedToQuery = dateValue.replaceAll('-', '/');
-  console.log("Data formatada para busca:", dataParsedToQuery);
+  // console.log("Data formatada para busca:", dataParsedToQuery);
   
   try {
     const dataToFind = await postCollection.find({ data: dataParsedToQuery }).toArray();
-    console.log(dataToFind);
+    // console.log(dataToFind);
     if (dataToFind.length > 0) {
-      console.log(dataToFind);
+      // console.log(dataToFind);
       return res.status(200).json({ message: dataToFind });
     } else {
       return res.status(400).json({ errorMessage: "Data não encontrada no sistema." });

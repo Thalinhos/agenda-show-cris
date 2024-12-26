@@ -22,7 +22,7 @@ export function ModalEvent({ render = false, descricao = "descrição", data = "
     };
 
     const handleSave = () => {
-        console.log('Salvando dados:', formData);
+        // console.log('Salvando dados:', formData);
         closeModal(); // chamando o handleCloseModal no Calendarcomponent
     };
 
